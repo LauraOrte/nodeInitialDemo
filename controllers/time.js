@@ -9,7 +9,7 @@ const mostrarFecha = (req,res)=>{
       user,
       date: new Date().toLocaleString()
     }
-    res.status(200).send({dateNow})
+    res.status(200).json({dateNow})
   }
 
 
