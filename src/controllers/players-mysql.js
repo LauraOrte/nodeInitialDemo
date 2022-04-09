@@ -30,6 +30,14 @@ export const playersGet = async (req, res) => {
     }
 };
 
+export const playerGetId = async () => {
+
+};
+
+export const generalRanking = async () => {
+
+};
+
 export const modifyPlayerName = async (req, res) => {
     try {
         const id = req.params.id;
@@ -43,4 +51,20 @@ export const modifyPlayerName = async (req, res) => {
             error: 'Player not found'
         });
     };
+};
+
+export const playerRollDices = async () => {
+
+};
+
+export const getBetterPlayer = async () => {
+
+};
+
+export const getWorstPlayer = async () => {
+
+};
+
+export const deleteGames = async () => {
+
 };

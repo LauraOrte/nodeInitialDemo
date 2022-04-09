@@ -1,7 +1,9 @@
 import { Router } from 'express';
 
-import { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } from '../controllers/players-mongo';
-import mysql from '../controllers/players-mysql';
+// import { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } from '../controllers/players-mongo';
+
+import { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } from '../controllers/players-mysql';
+
 import { validateToken } from '../middlewares/validate-jwt';
 
 const router = Router();
