@@ -35,7 +35,14 @@ export const playerGetId = async () => {
 };
 
 export const generalRanking = async () => {
-
+    try {
+        const totalPlayers = await Player.count();
+        const sumWinRate = await Player.sum('winRate');
+        const generalWinRate = sumWinRate / totalPlayers;
+        res.status(200).json({ generalWinRate });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 };
 
 export const modifyPlayerName = async (req, res) => {
@@ -92,7 +99,7 @@ export const playerRollDices = async () => {
         res.status(200).json({
             playerRolled,
             roll
-        }); 
+        });
 
     } catch (error) {
         res.status(500).json(error);
@@ -100,13 +107,46 @@ export const playerRollDices = async () => {
 };
 
 export const getBetterPlayer = async () => {
-
+    const betterWinRate = await Player.max('winRate')
+    console.log(betterWinRate)
+    try {
+        const player = await Player.findAll({ where: { winRate: betterWinRate } })
+        res.status(200).json({ player });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 };
 
 export const getWorstPlayer = async () => {
-
+    const worstWinRate = await Player.min('winRate')
+    console.log(worstWinRate)
+    try {
+        const player = await Player.findAll({ where: { winRate: worstWinRate } })
+        res.status(200).json({ player })
+    } catch (error) {
+        res.status(500).json({ error })
+    }
 };
 
 export const deleteGames = async () => {
+    const id = req.params.id;
 
+    try {
+        await Roll.destroy({ where: { PlayerId: id } });
+
+        await Player.update({
+            totalGames: 0,
+            totalWins: 0,
+            winRate: 0
+        }, { where: { id: id } });
+
+        const player = await Player.findAll({ where: { id: id } });
+
+        res.status(200).json({
+            player
+        });
+
+    } catch (error) {
+        res.status(500).json({ error })
+    }
 };
