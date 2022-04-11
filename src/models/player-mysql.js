@@ -21,7 +21,9 @@ export const Roll = sequelize.define('Roll', {
     }
 },
     {
-        timestamps: false
+        timestamps: false,
+        updatedAt: false,
+        createdAt: false
     }
 );
 

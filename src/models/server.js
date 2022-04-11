@@ -24,7 +24,8 @@ class Server {
         if (process.env.DB === 'mongodb') {
             return await dbConnectMongo();
         } else if (process.env.DB === 'mysql'){
-
+            await db.authenticate();
+            console.log('Database online MySQL');
         } else {
             throw new Error('Define the database (mongodb or mysql) in the environment variables (.env).')
         }
