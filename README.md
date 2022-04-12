@@ -43,11 +43,15 @@ npm start
 
 ## Sequelize (Nivel 1 ⭐️)
 
-La parte de sequelize no la tengo acabada del todo, me falta acabar los controladores y pasarselos a las rutas.
+Para que funcione la parte de sequelize, tienes que tener el servidor de mySQL encendido y tendrás que crear una base de datos que se llame 'dicegame', puedes hacerlo desde MySQL Workbenck escribiendo el siguiente comando:
+```
+CREATE DATABASE dicegame;
+```
+Puedes importar el json 'Dice game.postman_collection.json' en postman para tener todas las rutas configuradas correctamente.
 
 ## Mongoose (Nivel 2 ⭐️⭐️)
 
-La parte de mongoose está finalizada correctamente, se pueden comprobar todas las rutas importando en postman el archivo: 
+La parte de mongoose está finalizada correctamente, recuerda que se pueden comprobar todas las rutas importando en postman el archivo: 
 ```
 Dice game.postman_collection.json
 ```
