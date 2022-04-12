@@ -1,12 +1,10 @@
-import sequelize, { where } from 'sequelize';
 import { Player, Roll } from '../models/player-mysql';
 import rollDices from '../models/dices';
-import crypto from 'crypto';
 
-export const createNewPlayer = async (req, res) => {
+export const createPlayer = async (req, res) => {
     try {
         let { name } = req.body;
-        name ? true : NAME === 'ANONYMOUS';
+        name ? true : NAME = 'ANONYMOUS';
         const playerStored = await Player.create({ name });
         res.status(200).json({
             player: playerStored
@@ -20,7 +18,7 @@ export const playersGet = async (req, res) => {
     try {
         const players = await Player.findAll({
             attributes: ['id', 'name', 'winRate'],
-            include: [roll]
+            // include: [roll]
         });
         res.status(200).json({
             players

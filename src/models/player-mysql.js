@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../database/config-sequelize';
+import sequelize from '../database/config-sequelize';
 
 export const Roll = sequelize.define('Roll', {
     id: {
@@ -23,7 +23,8 @@ export const Roll = sequelize.define('Roll', {
     {
         timestamps: false,
         updatedAt: false,
-        createdAt: false
+        createdAt: false,
+        tableName: 'rolls'
     }
 );
 
@@ -54,7 +55,8 @@ export const Player = sequelize.define('Player', {
     {
         timestamps: true,
         updatedAt: false,
-        createdAt: 'data'
+        createdAt: 'data',
+        tableName: 'players'
     }
 );
 

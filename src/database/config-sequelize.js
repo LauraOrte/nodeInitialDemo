@@ -9,4 +9,16 @@ const sequelize = new Sequelize('diceGame','root',process.env.MYSQLKEY,{
     dialect: 'mysql', // Motor de la base de datos que estamos utilizando.
 });
 
+//CREATE TABLE IF NOT EXISTS
+sequelize.sync({ force: false })
+    .then(() => {
+        console.log("Tablas sincronizadas")
+    });
+
+//DROP ALL TABLES
+// sequelize.drop()
+// .then(() => {
+//   console.log("Tablas eliminadas")
+// });
+
 export default sequelize;

@@ -1,5 +1,6 @@
 import express from 'express';
 import { dbConnectMongo } from '../database/config-mongoose';
+import sequelize from '../database/config-sequelize';
 
 import routerPlayers from '../routes/players';
 import routerLogin from '../routes/login';
@@ -24,7 +25,7 @@ class Server {
         if (process.env.DB === 'mongodb') {
             return await dbConnectMongo();
         } else if (process.env.DB === 'mysql'){
-            await db.authenticate();
+            await sequelize.authenticate();
             console.log('Database online MySQL');
         } else {
             throw new Error('Define the database (mongodb or mysql) in the environment variables (.env).')
