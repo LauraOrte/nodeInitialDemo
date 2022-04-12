@@ -1,5 +1,5 @@
 import { Player, Roll } from '../models/player-mysql';
-import rollDices from '../models/dices';
+import { rollDices } from '../models/dices';
 import sequelize from '../database/config-sequelize';
 
 export const createPlayer = async (req, res) => {
@@ -19,7 +19,6 @@ export const playersGet = async (req, res) => {
     try {
         const players = await Player.findAll({
             attributes: ['id', 'name', 'winRate'],
-            // include: [roll]
         });
         res.status(200).json({
             players
@@ -64,18 +63,10 @@ export const playerRollDices = async (req, res) => {
 
     const { diceA, diceB, rollScore, veredict } = rollDices();
 
-    // let win;
-
     try {
-        const roll = await roll.create({
-            diceA,
-            diceB,
-            rollScore,
-            veredict,
-            playerId
-        });
+        const roll = await roll.create({ diceA, diceB, rollScore, veredict, playerId });
 
-        let arr = '';
+        let arr = [];
 
         if (veredict === 'win') {
             Player.increment(['totalGames', 'totalWins'], { where: { id: playerId } });

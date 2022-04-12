@@ -14,8 +14,11 @@ class Server {
 
         this.connectionDB()
 
-        this.playersPath = '/players';
-        this.loginPath = '/login';
+        this.path = {
+            players: '/players',
+            login: '/login'
+        };
+
         this.routes();
 
         this.listen()
@@ -37,8 +40,8 @@ class Server {
     };
 
     routes() {
-        this.app.use(this.playersPath, routerPlayers);
-        this.app.use(this.loginPath, routerLogin);
+        this.app.use(this.path.players, routerPlayers);
+        this.app.use(this.path.login, routerLogin);
     };
 
     listen() {
