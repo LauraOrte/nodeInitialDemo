@@ -78,6 +78,23 @@ Para validar el token en el resto de endpoints, tenemos dos maneras de hacerlo:
 
 ![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/6.png)
 
+## Cambio de persistencia MySQL/MongoDB
+Para cambiar la persistencia de la base de datos he intentado hacerlo de varias maneras, en primer lugar intenté pasar todas las funciones de los controladores de ambas bases de datos a un archivo intermedio para que a través de condicionales dependiendo de las variables de entorno, se ejecutaran unas u otras, pero daba error y resulta que las rutas tienen que recibir los controladores directamente. Tambien intenté hacerlo en el mismo archivo de las rutas a través de condicionales, pero tampoco funcionaba. Finalmente la forma por la que me he decantado a hacerlo no me gusta mucho, pero es funcional, hay que tener en cuenta dos factores:
+
+### Variables de entorno
+Dependiendo de la persistencia que quieras utilizar hay que hacer un pequeño cambio en las variables de entorno, si queremos utilizar mySQL, usaremos lo siguiente:
+```
+DB=mysql
+```
+Y si queremos utilizar mongoDB, usaremos lo siguiente:
+```
+DB=mongodb
+```
+### Comentar y descomentar imports
+Por otro lado (Esta es la parte fea del asunto) hay que comentar u descomentar la importación correspondiente en el archivo players dentro de la carpeta routes:
+
+
+
 ## Endpoints
 Los endpoint que he utilizado para realizar este juego de dados son los siguientes:
 

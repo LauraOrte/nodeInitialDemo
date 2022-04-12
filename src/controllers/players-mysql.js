@@ -1,5 +1,6 @@
 import { Player, Roll } from '../models/player-mysql';
 import rollDices from '../models/dices';
+import sequelize from '../database/config-sequelize';
 
 export const createPlayer = async (req, res) => {
     try {
@@ -28,11 +29,11 @@ export const playersGet = async (req, res) => {
     }
 };
 
-export const playerGetId = async () => {
+export const playerGetId = async (req, res) => {
 
 };
 
-export const generalRanking = async () => {
+export const generalRanking = async (req, res) => {
     try {
         const totalPlayers = await Player.count();
         const sumWinRate = await Player.sum('winRate');
@@ -58,11 +59,12 @@ export const modifyPlayerName = async (req, res) => {
     };
 };
 
-export const playerRollDices = async () => {
+export const playerRollDices = async (req, res) => {
     const playerId = req.params.id;
-    const { diceA, diceB, rollScore, veredict } = rollDices()
 
-    let win = '';
+    const { diceA, diceB, rollScore, veredict } = rollDices();
+
+    // let win;
 
     try {
         const roll = await roll.create({
@@ -104,7 +106,7 @@ export const playerRollDices = async () => {
     }
 };
 
-export const getBetterPlayer = async () => {
+export const getBetterPlayer = async (req, res) => {
     const betterWinRate = await Player.max('winRate')
     console.log(betterWinRate)
     try {
@@ -115,7 +117,7 @@ export const getBetterPlayer = async () => {
     }
 };
 
-export const getWorstPlayer = async () => {
+export const getWorstPlayer = async (req, res) => {
     const worstWinRate = await Player.min('winRate')
     console.log(worstWinRate)
     try {
@@ -126,7 +128,7 @@ export const getWorstPlayer = async () => {
     }
 };
 
-export const deleteGames = async () => {
+export const deleteGames = async (req, res) => {
     const id = req.params.id;
 
     try {

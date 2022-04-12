@@ -6,6 +6,13 @@ import { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName
 
 import { validateToken } from '../middlewares/validate-jwt';
 
+//! No funcionan los condicionales 
+// if (process.env.DB === 'mongodb') {
+//     const { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } = require('../controllers/players-mongo');
+// } else if (process.env.DB === 'mysql'){
+//     const { createPlayer, playersGet, playerGetId, generalRanking, modifyPlayerName, playerRollDices, getBetterPlayer, getWorstPlayer, deleteGames } = require('../controllers/players-mysql');
+// }
+
 const router = Router();
 
 // returns the list of all players in the system with their average success rate.
