@@ -93,7 +93,9 @@ DB=mongodb
 ### Comentar y descomentar imports
 Por otro lado (Esta es la parte fea del asunto) hay que comentar u descomentar la importación correspondiente en el archivo players dentro de la carpeta routes:
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/8.png)
 
+En el caso de la foto anterior estaríamos utilizando la persistencia con mySQL, si quisieramos utilizar la persistencia con mongoDB, tendríamos que comentar la importación descomentada y descomentar la importación comentada (MongoDB), recuerda tambien el cambio en las variables de entorno.
 
 ## Endpoints
 Los endpoint que he utilizado para realizar este juego de dados son los siguientes:
