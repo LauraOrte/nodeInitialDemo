@@ -32,6 +32,8 @@ Por otro lado las dependencias que he utilizado son cors, dotenv, express, jsonw
 
 Para configurar las variables de entorno, tendrás que crear un archivo .env y rellenar los elementos que se encuentran el el archivo .example.env
 
+![Demo](https://github.com/DanielEspanadero/nodeInitialDemo/blob/4.2-Node-REST-DB-JWT/docs/9.png)
+
 ## Comandos para ejecutar ⌨️
 
 ⚠️ ANTES DE COMENZAR, RECUERDA TENER INICIADO EL SERVIDOR DE MONGODB Y MYSQL ⚠️

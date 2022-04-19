@@ -83,9 +83,9 @@ export const playerRollDices = async (req, res) => {
         const { totalGames, totalWins } = arr[0][0].dataValues;
 
         const winRate = (totalWins / totalGames) * 100
-        await Player.update({ winRate }, { where: { id: PlayerId } });
+        await Player.update({ winRate }, { where: { id: playerId } });
 
-        const playerRolled = await Player.findAll({ attributes: ['name'], where: { id: PlayerId } });
+        const playerRolled = await Player.findAll({ attributes: ['name'], where: { id: playerId } });
 
         res.status(200).json({
             playerRolled,
