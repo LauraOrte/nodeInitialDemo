@@ -1,13 +1,8 @@
 # SPRINT4_2: DICEGAMES
 
-npm run mongoStart (persistencia con mongo) npm run mysqlStart (persistencia con mysql)
+La aplicación usa el puerto local 3000. Todos los endpoints derivan de la base http://localhost:3000/. Se adjunta un archivo los las peticiones hechas en postman para testear los distintos endpoints. Scripts npm run mongoStart (persistencia con mongo) y/o npm run mysqlStart (persistencia con mysql).
 
-todos los endpoints estan en la collection de postman
+Para hacer el login :
 
-en config.js esta la config de mysql
+POST '/login' con basic auth , usuario: admin , contraseña: Mokoso14
 
-para hacer el login :
-
-POST '/login' con basic auth , usuario: admin , contraseña: 12345
-
-a
