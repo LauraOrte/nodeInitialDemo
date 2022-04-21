@@ -1,4 +1,4 @@
-constexpress = require('express'),
+const express = require('express'),
 app = express(),
 juego = require('./routes/router')
 require('./connectionDB')

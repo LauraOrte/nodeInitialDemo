@@ -1,6 +1,6 @@
 const configDB = {
     user:"root",
-    password:"12345",
+    password:"Mokoso14",
     database:"dados_game",
     host:"localhost",
     port: 3306
