@@ -10,9 +10,9 @@ const addNewPlayer = async (req, res)=>{
     name? true: name = uniqid('ANONIM-')
     const player = Player({ name, data })
     const playerStored = await player.save()
-    res.status(201).send({ player:playerStored })
+    res.status(201).json({ player:playerStored })
   } catch(e){
-    res.status(500).send({ message: e.message })
+    res.status(500).json({ message: e.message })
   }
 }
 
@@ -23,9 +23,9 @@ const modifyPlayerName = async (req, res) =>{
     const player = await Player.findById({_id:id})
     player.name = name
     playerUpdated = await player.save()
-    res.status(200).send({playerUpdated})
+    res.status(200).json({playerUpdated})
   } catch(e){
-    res.status(500).send({message: e.message})
+    res.status(500).json({message: e.message})
   }
 }
 
@@ -39,7 +39,7 @@ const getAllPlayers = async ( req, res) =>{
       }
     return obj
     }  )
-  res.status(200).send({ players: response })
+  res.status(200).json({ players: response })
 }
 
 const playerRollDices = async( req, res )=>{
@@ -54,9 +54,9 @@ const playerRollDices = async( req, res )=>{
     player.rolls.push(game)
     player.winRate = parseFloat(((player.totalWins / player.totalGames)*100).toFixed(2))
     await player.save()
-    res.status(200).send({name:player.name , rolled:game})
+    res.status(200).json({name:player.name , rolled:game})
   }catch(e){
-    res.status(500).send({message: e.message})
+    res.status(500).json({message: e.message})
   }
 }
 
@@ -69,9 +69,9 @@ const deleteGames = async ( req ,res ) => {
     player.winRate = 0
     player.rolls = []
     await player.save()
-    res.status(200).send({message:'games removed successfully', player })
+    res.status(200).json({message:'games removed successfully', player })
   } catch (e) {
-    res.status(404).send({message:'player not found'})
+    res.status(404).json({message:'player not found'})
   }
 }
 
@@ -79,12 +79,12 @@ const playerGamesList = async (req, res) => {
   const id = req.params.id
   try {
     const player = await Player.findById({_id:id})
-    res.status(200).send({ 
+    res.status(200).json({ 
       player:player.name,
       rollList:player.rolls
     })
   } catch ( e ) {
-    res.status(404).send({message:'player not found'})
+    res.status(404).json({message:'player not found'})
   }
 }
 
@@ -95,9 +95,9 @@ const generalRanking = async ( req, res ) => {
     let sumWinRates = 0
     players.forEach(player => sumWinRates += player.winRate )
     const generalWinRate = sumWinRates/numPlayers
-    res.status(200).send({generalWinRate})
+    res.status(200).json({generalWinRate})
   } catch ( e ) {
-    res.status(500).send({message: e.message})
+    res.status(500).json({message: e.message})
   }
 }
 
@@ -107,9 +107,9 @@ const getBetterPlayer = async (req, res)=>{
     let max = 0
     players.forEach(player => player.winRate > max ? max = player.winRate : null )
     const bestPlayers = await Player.find({winRate:max})
-    res.status(200).send({ bestPlayers })
+    res.status(200).json({ bestPlayers })
   } catch (e){
-    res.status(500).send({message: e.message})
+    res.status(500).json({message: e.message})
   }
 }
 
@@ -119,9 +119,9 @@ const getWorstPlayer = async (req, res) =>{
     let min = 100
     players.forEach(player => player.winRate < min ? min = player.winRate : null )
     const worstPlayers = await Player.find({winRate:min})
-    res.status(200).send({ worstPlayers })
+    res.status(200).json{ worstPlayers })
   } catch (e){
-    res.status(500).send({message: e.message})
+    res.status(500).json({message: e.message})
   }
 }
 
