@@ -64,7 +64,7 @@ export const playerRollDices = async (req, res) => {
     const { diceA, diceB, rollScore, veredict } = rollDices();
 
     try {
-        const roll = await roll.create({ diceA, diceB, rollScore, veredict, playerId });
+        const roll = await Roll.create({ diceA, diceB, rollScore, veredict, playerId });
 
         let arr = [];
 
