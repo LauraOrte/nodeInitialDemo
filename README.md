@@ -1,8 +1,9 @@
 # SPRINT4_2: Node REST + DB + JWT
 
 La aplicación usa el puerto local 3000. Todos los endpoints derivan de la base http://localhost:3000/. Se adjunta un archivo los las peticiones hechas en postman para testear los distintos endpoints. 
-Script npm run mongoStart (persistencia con mongo).
-Script npm run mysqlStart (persistencia con mysql).
+
+# Script npm run mongoStart (persistencia con mongo).
+# Script npm run mysqlStart (persistencia con mysql).
 
 # Requisitos previos;
 
