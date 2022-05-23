@@ -28,7 +28,7 @@ Para realizar la autenticación introducir en el endpoint /login los siguientes 
 ```
 {
     "username": "admin",
-    "password": "Mokoso14"
+    "password": "12345"
 }
 ```
 
