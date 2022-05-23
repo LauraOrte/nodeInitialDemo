@@ -1,13 +1,17 @@
 const
-  { Player } = require('../MongoPersistence/db'),
+  { Player } = require('../config/MongoPersistence/mongoDb'),
   uniqid = require('uniqid'),
-  rollDices = require('../DadosLogica/daus')
+  rollDices = require('../services/DadosLogica/daus')
 
 const addNewPlayer = async (req, res)=>{
   try{
-    let { name } = req.body
+    let  {name} = req.body
     const data = new Date().toLocaleDateString()
-    name? true: name = uniqid('ANONIM-')
+    if (name === null){
+      name = 'Anonim';
+    } else {
+      name = name;
+    }
     const player = Player({ name, data })
     const playerStored = await player.save()
     res.status(201).json({ player:playerStored })
@@ -119,7 +123,7 @@ const getWorstPlayer = async (req, res) =>{
     let min = 100
     players.forEach(player => player.winRate < min ? min = player.winRate : null )
     const worstPlayers = await Player.find({winRate:min})
-    res.status(200).json{ worstPlayers })
+    res.status(200).json({ worstPlayers })
   } catch (e){
     res.status(500).json({message: e.message})
   }

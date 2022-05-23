@@ -1,7 +1,7 @@
 const express = require('express'),
 app = express(),
 juego = require('./routes/router')
-require('./connectionDB')
+require('./config/connectionDB')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))

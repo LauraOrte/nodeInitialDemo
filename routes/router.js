@@ -18,7 +18,7 @@ const
   {
     checkAdmin,
     checkJWT
-  } = require('../jwtManagment/jwt')
+  } = require('../services/jwtManagment/jwt')
 
   
 juego.post('/login',checkAdmin)
