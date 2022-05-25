@@ -1,9 +1,9 @@
 const 
   Sequelize = require('sequelize'),
-  {sequelize} = require('../MySQLPersistence/db'),
-  {Player, Roll} = require('../MySQLPersistence/db'),
+  {sequelize} = require('../config/MySQLPersistence/mysqldb'),
+  {Player, Roll} = require('../config/MySQLPersistence/mysqldb'),
   uniqid = require('uniqid'),
-  rollDices = require('../DadosLogica/daus')
+  rollDices = require('../services/DadosLogica/daus')
 
 const addNewPlayer = async(req, res) => {
   try {

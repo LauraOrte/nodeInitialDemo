@@ -3,6 +3,6 @@ if(process.env.NODE_ENV === 'mongo'){
     connectMongoDB()
     }
     if(process.env.NODE_ENV === 'mysql'){
-    const {connectMySQLDB} = require('./MySQLPersistence/mysqlDb')
+    const {connectMySQLDB} = require('./MySQLPersistence/mysqldb')
     connectMySQLDB()
     }
