@@ -1,50 +1,97 @@
+# SPRINT4_2: Node REST + DB + JWT
 
-# Node Initial Project
+La aplicación usa el puerto local 3000. Todos los endpoints derivan de la base http://localhost:3000/. Se adjunta un archivo los las peticiones hechas en postman para testear los distintos endpoints. 
 
-### Project Structure
+### · Script npm run mongoStart (persistencia con mongo).
+### · Script npm run mysqlStart (persistencia con mysql).
+    Para acceder acceder a la configuración de mysql están los datos en el archivo config.js (user, password).
 
-Main structure of node.js project. Folders / files:
+# Requisitos previos;
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
+Para que el proyecto funcione correctamente, se recomienda tener una serie de programas instalados y configurados adecuadamente:
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Node.js y npm](https://nodejs.org/es/)
+- [MongoDB](https://docs.mongodb.com/manual/installation/)
+- [MySQL Server](https://dev.mysql.com/downloads/)
 
-### Import project for use with WebStorm
+# Instalación 
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+Recuerda ejecutar el siguiente comando en la terminal para instalar las dependencias y que todo funcione correctamente:
+```
+npm install
+```
 
 
-### Import project for use with Visual Studio Code
+# Autenticación
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+Para realizar la autenticación introducir en el endpoint /login los siguientes parámetros:
+```
+{
+    "username": "admin",
+    "password": "12345"
+}
+```
+
+# Endpoints
+### GET
+
+Devuelve un listado de todos los jugadores del sistema con su porcentaje medio de éxitos:
+```
+/players
+```
+
+Devuelve un listado de jugadas realizadas por un jugador:
+```
+/players/:id/games
+```
+
+Devuelve el porcentaje médio de éxito del conjunto de todos los jugadores:
+```
+/players/ranking
+```
+
+Devuelve el jugador con mejor porcentaje de éxito:
+```
+/players/ranking/winner
+```
+
+Devuelve el jugador con mejor porcentaje de éxito:
+```
+/players/ranking/loser
+```
+
+### POST
+
+Permite acceder a un administrador con usuario y contraseña y devuelve un token haciendo obligatoria la autenticación por JWT en el resto de endpoints:
+```
+/login
+```
+
+Crea un jugador (Hay que pasar en el body el argumento "name" añadiendo como valor el nombre que le queramos dar al jugador que vallamos a crear, si no le damos ningún valor, el nombre será "ANONYMOUS"):
+```
+/players
+```
+
+Un jugador específico realiza una tirada:
+```
+/players/:id/games
+```
+
+### PUT
+
+Modificamos el nombre del jugador, hay que pasar en el body el parametro "name":
+```
+/players/:id
+```
+
+### DELETE
+
+Borrar las jugadas del jugador seleccionado:
+```
+/players/:id/games
+```
 
 
-### Utilities
 
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+
+
