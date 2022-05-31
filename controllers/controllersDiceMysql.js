@@ -7,8 +7,8 @@ const
 
 const addNewPlayer = async(req, res) => {
   try {
-    let { name } = req.body
-    name? true : name = uniqid('ANONIM-')
+    let { name } = req.body;
+    name ? true : name = 'ANONYMOUS';
     const playerStored = await Player.create({name})
     res.status(201).json({player: playerStored})
   } catch (e){

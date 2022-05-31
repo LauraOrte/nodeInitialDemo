@@ -5,13 +5,10 @@ const
 
 const addNewPlayer = async (req, res)=>{
   try{
-    let  {name} = req.body
-    const data = new Date().toLocaleDateString()
-    if (name === null){
-      name = 'Anonim';
-    } else {
-      name = name;
-    }
+    let { name } = await req.body;
+    name ? true : name = 'ANONYMOUS'
+    let data = new Date().toLocaleDateString();
+    
     const player = Player({ name, data })
     const playerStored = await player.save()
     res.status(201).json({ player:playerStored })
