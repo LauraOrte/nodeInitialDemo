@@ -20,10 +20,6 @@ Recuerda ejecutar el siguiente comando en la terminal para instalar las dependen
 npm install
 ```
 
-# Variables de entorno
-
-Para configurar las variables de entorno, tendrás que crear un archivo .env y rellenar los elementos que se encuentran el el archivo .example.env
-
 
 # Autenticación
 
