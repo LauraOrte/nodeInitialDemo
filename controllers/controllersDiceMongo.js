@@ -3,12 +3,14 @@ const
   uniqid = require('uniqid'),
   rollDices = require('../services/DadosLogica/daus')
 
+ // USUARIOS 
+
 const addNewPlayer = async (req, res)=>{
   try{
     let { name } = await req.body;
     name ? true : name = 'ANONYMOUS'
     let data = new Date().toLocaleDateString();
-    
+
     const player = Player({ name, data })
     const playerStored = await player.save()
     res.status(201).json({ player:playerStored })
@@ -43,6 +45,9 @@ const getAllPlayers = async ( req, res) =>{
   res.status(200).json({ players: response })
 }
 
+
+// JUEGO
+
 const playerRollDices = async( req, res )=>{
   const id = req.params.id
   const game = rollDices()
@@ -76,6 +81,7 @@ const deleteGames = async ( req ,res ) => {
   }
 }
 
+
 const playerGamesList = async (req, res) => {
   const id = req.params.id
   try {
@@ -88,6 +94,8 @@ const playerGamesList = async (req, res) => {
     res.status(404).json({message:'player not found'})
   }
 }
+
+//RANKING
 
 const generalRanking = async ( req, res ) => {
   try {

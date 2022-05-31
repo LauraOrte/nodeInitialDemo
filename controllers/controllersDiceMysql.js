@@ -5,6 +5,9 @@ const
   uniqid = require('uniqid'),
   rollDices = require('../services/DadosLogica/daus')
 
+
+ // USUARIOS
+
 const addNewPlayer = async(req, res) => {
   try {
     let { name } = req.body;
@@ -38,6 +41,8 @@ const getAllPlayers = async(req, res) => {
   })
    res.status(200).json({ players })
 }
+
+//JUEGO
 
 const playerRollDices = async(req, res) => {
   const PlayerId = req.params.id
@@ -101,6 +106,7 @@ const playerGamesList = async(req, res) => {
   }
 }
 
+// RANKING
 
 const generalRanking = async(req, res) => {
   try {
