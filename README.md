@@ -4,6 +4,7 @@ La aplicación usa el puerto local 3000. Todos los endpoints derivan de la base 
 
 ### · Script npm run mongoStart (persistencia con mongo).
 ### · Script npm run mysqlStart (persistencia con mysql).
+    Para acceder acceder a la configuración de mysql están los datos en el archivo config.js (user, password).
 
 # Requisitos previos;
 
